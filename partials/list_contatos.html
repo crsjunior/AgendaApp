@@ -1,0 +1,30 @@
+<div class="row">
+    <div ng-include="'partials/header.html'"></div>
+
+    <div ng-show="contatos.length > 0" class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+            <th class="center">ID&nbsp;</th>
+            <th>Nome&nbsp;</th>
+            <th>Sobrenome&nbsp;</th>
+            <th>Telefone&nbsp;</th>
+            <th>Email&nbsp;</th>
+            <th>Ações&nbsp;</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in contatos">
+                <td class="center">{{data.id | numberFixedLengthFormatter:4}}</td>
+                <td>{{data.nome}}</td>
+                <td>{{data.sobrenome}}</td>
+                <td>{{data.telefones[0].numero}}<span class="numero-formatado">[ {{data.telefones.length | numberFixedLengthFormatter:3}} ]</span></td>
+                <td>{{data.emails[0].endereco}}<span class="numero-formatado">[ {{ data.emails.length | numberFixedLengthFormatter:3}} ]</span></td>
+                <td><a href="#/edit_contato/{{data.id}}" class="btn">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp;Editar Contato</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div ng-show="contatos.length == 0" class="col-md-12">
+        <h4>Nenhum Contato encontrado.</h4>
+    </div>
+</div>

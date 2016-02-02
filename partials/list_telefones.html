@@ -1,0 +1,37 @@
+<div class="row">
+    <div ng-include="'partials/header.html'"></div>
+
+    <div ng-show="telefones.length > 0" class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+            <th class="center">ID&nbsp;</th>
+            <th>Número&nbsp;</th>
+            <th>Contato&nbsp;</th>
+            <th>Ações&nbsp;</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in telefones">
+                <td class="center">{{data.id | numberFixedLengthFormatter:4}}</td>
+                <td>{{data.numero}}</td>
+                <td>{{data.contato.sobrenome}}, {{data.contato.nome}}</td>
+                <td><a href="#/edit_telefone/{{data.id}}" class="btn">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp;Editar Telefone</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-12">
+        <a ng-click="setContatoNomeMode()" class="btn btn-lg btn-info">Trocar exibição nome</a>
+    </div>
+
+    <!--<div class="col-md-12">-->
+        <!--<button ng-click="toggleModal()">Open Modal Dialog</button>-->
+        <!--<modal-dialog show="modalShown" width="750px" height="60%">-->
+            <!--<p>Modal Content Goes here</p>-->
+        <!--</modal-dialog>-->
+    <!--</div>-->
+
+    <div ng-show="telefones.length == 0" class="col-md-12">
+        <h4>Nenhum Telefone encontrado.</h4>
+    </div>
+</div>

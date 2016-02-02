@@ -1,0 +1,30 @@
+<div class="row">
+    <div ng-include="'partials/header.html'"></div>
+
+    <div ng-show="emails.length > 0" class="col-md-12">
+        <table class="table table-bordered">
+            <thead>
+            <th class="center">ID&nbsp;</th>
+            <th>Endereço&nbsp;</th>
+            <th>Contato&nbsp;</th>
+            <th>Ações&nbsp;</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="data in emails">
+                <td class="center">{{data.id | numberFixedLengthFormatter:4}}</td>
+                <td>{{data.endereco}}</td>
+                <td>{{getContatoFullName(data)}}</td>
+                <td><a href="#/edit_email/{{data.id}}" class="btn">&nbsp;<i class="glyphicon glyphicon-edit"></i>&nbsp;Editar Email</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="col-md-12">
+        <a ng-click="setContatoNomeMode()" class="btn btn-lg btn-info">Trocar exibição nome</a>
+    </div>
+
+    <div ng-show="emails.length == 0" class="col-md-12">
+        <h4>Nenhum Email encontrado.</h4>
+    </div>
+</div>

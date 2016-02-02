@@ -1,0 +1,16 @@
+<div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <a id="header-btn-home" ng-show="{{headerContent.btnHomeText !== undefined}}" class="btn {{headerContent.btnHomeStyle}}" href="{{headerContent.btnHomeTarget}}" ng-click="headerContent.btnHomeFunc()">
+            <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;{{headerContent.btnHomeText}}
+        </a>
+        <a id="header-btn-new" ng-show="{{headerContent.btnNewText !== undefined}}" class="btn {{headerContent.btnNewStyle}}" href="{{headerContent.btnNewTarget}}" ng-click="headerContent.btnNewFunc()">
+            <i class="glyphicon glyphicon-plus"></i>&nbsp;{{headerContent.btnNewText}}
+        </a>
+        <a id="header-btn-other1" ng-show="{{headerContent.btnOther1Text !== undefined}}" class="btn {{headerContent.btnOther1Style}}" href="{{headerContent.btnOther1Target}}" ng-click="headerContent.btnOther1Func()">
+            <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;{{headerContent.btnOther1Text}}
+        </a>
+        <a id="header-btn-other2" ng-show="{{headerContent.btnOther2Text !== undefined}}" class="btn {{headerContent.btnOther2Style}}" href="{{headerContent.btnOther2Target}}" ng-click="headerContent.btnOther2Func($event)">
+            <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;{{headerContent.btnOther2Text}}
+        </a>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="navbar navbar-default" role="navigation">
+    <div class="navbar-header">
+        <a ng-show="{{headerContent.btnHomeText !== undefined}}" class="btn btn-lg btn-primary" href="#{{headerContent.btnHomeLink}}">
+            <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;{{headerContent.btnHomeText}}
+        </a>
+        <a ng-show="{{headerContent.btnNewText !== undefined}}" class="btn btn-lg btn-success" href="#{{headerContent.btnNewLink}}">
+            <i class="glyphicon glyphicon-plus"></i>&nbsp;{{headerContent.btnNewText}}
+        </a>
+        <a ng-show="{{headerContent.btnOther1Text !== undefined}}" class="btn btn-lg btn-danger" href="#{{headerContent.btnOther1Link}}">
+            <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;{{headerContent.btnOther1Text}}
+        </a>
+        <a ng-show="{{headerContent.btnOther2Text !== undefined}}" class="btn btn-lg btn-danger" href="#{{headerContent.btnOther2Link}}">
+            <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;{{headerContent.btnOther2Text}}
+        </a>
+    </div>
+</div>
