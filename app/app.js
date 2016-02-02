@@ -31,12 +31,7 @@ app.directive('modalDialog', function()
 });
 
 
-app.factory('newHeaderSetup', ['$event', function($event)
-{
-
-}]);
-
-app.factory('headerSetup', ['$event', function($event)
+app.factory('headerSetup', function()
 {
 	/**
 	 * Configura os dados dos botoes (text, target e style).
@@ -69,28 +64,32 @@ app.factory('headerSetup', ['$event', function($event)
 		}
 
 		/**
-		 * Verifica se um texto informado refere-se a uma funcao (terminada em "()").
+		 * Verifica se um texto informado refere-se a uma funcao (terminada em "(event)").
 		 * @param btnTarget O texto da funcao a ser verificado.
 		 * @returns {boolean} True se o texto refere-se a uma funcao.
 		 */
 		function isFunc(btnTarget)
 		{
-			return (btnTarget !== undefined && btnTarget.match(/\(\)$/) !== null);
+			return (btnTarget !== undefined && btnTarget.match(/\(event\)$/) !== null);
 		}
 
 		return {
 			btnHomeText: homeText,
-			btnHomeTarget: !isFunc(homeTarget) ? homeTarget : window.location.href,
+			btnHomeTarget: homeTarget,
 			btnHomeStyle: !(homeStyle == null || homeStyle == undefined) ? homeStyle : 'btn-lg btn-primary',
+			btnHomeIsLink: !isFunc(homeTarget),
 			btnNewText: newText,
-			btnNewTarget: !isFunc(newTarget) ? newTarget : window.location.href,
+			btnNewTarget: newTarget,
 			btnNewStyle: !(newStyle == null || newStyle == undefined) ? newStyle : 'btn-lg btn-success',
+			btnNewIsLink: !isFunc(newTarget),
 			btnOther1Text: other1Text,
-			btnOther1Target: !isFunc(other1Target) ? other1Target : window.location.href,
+			btnOther1Target: other1Target,
 			btnOther1Style: !(other1Style == null || other1Style == undefined) ? other1Style : 'btn-lg btn-danger',
+			btnOther1IsLink: !isFunc(other1Target),
 			btnOther2Text: other2Text,
-			btnOther2Target: !isFunc(other2Target) ? other2Target : window.location.href,
+			btnOther2Target: other2Target,
 			btnOther2Style: !(other2Style == null || other2Style == undefined) ? other2Style : 'btn-lg btn-danger',
+			btnOther2IsLink: !isFunc(other2Target),
 			btnHomeFunc: function()
 			{
 				execFunc(homeTarget);
@@ -103,9 +102,8 @@ app.factory('headerSetup', ['$event', function($event)
 			{
 				execFunc(other1Target);
 			},
-			btnOther2Func: function($event)
+			btnOther2Func: function()
 			{
-				console.log($event.currentTarget);
 				execFunc(other2Target);
 			}
 		};
@@ -150,12 +148,12 @@ app.factory('headerSetup', ['$event', function($event)
 			'Emails', '#list_emails', null,
 			'Novo Email', '#edit_email', 'btn-lg btn-info',
 			'Contatos', '#list_contatos', null,
-			'Trocar exibição do Nome', 'setContatoNomeMode()', 'btn-lg btn-warning'
+			'Trocar exibição do Nome', 'setContatoNomeMode(event)', 'btn-lg btn-warning'
 		);
 	};
 
 	return obj;
-}]);
+});
 
 
 app.factory('services', ['$http', function($http)
@@ -422,8 +420,11 @@ app.controller('listEmailsCtrl', function($scope, $rootScope, services, headerSe
 		}
 	};
 
-	$scope.setContatoNomeMode = function(ele)
+	$scope.setContatoNomeMode = function($event)
 	{
+		var tempUrl = $($event.currentTarget).attr('data-id');
+		console.log(tempUrl);
+
 		$scope.contatoNomeReverseMode = !$scope.contatoNomeReverseMode;
 		if ($scope.contatoNomeReverseMode) {
 			$scope.headerContent.btnOther2Style += ' active';

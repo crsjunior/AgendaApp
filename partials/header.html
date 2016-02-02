@@ -1,15 +1,31 @@
 <div class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
-        <a id="header-btn-home" ng-show="{{headerContent.btnHomeText !== undefined}}" class="btn {{headerContent.btnHomeStyle}}" href="{{headerContent.btnHomeTarget}}" ng-click="headerContent.btnHomeFunc()">
+        <!--home button-->
+        <a ng-if="headerContent.btnHomeIsLink && headerContent.btnHomeText !== undefined" class="btn {{headerContent.btnHomeStyle}}" href="{{headerContent.btnHomeTarget}}">
             <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;{{headerContent.btnHomeText}}
         </a>
-        <a id="header-btn-new" ng-show="{{headerContent.btnNewText !== undefined}}" class="btn {{headerContent.btnNewStyle}}" href="{{headerContent.btnNewTarget}}" ng-click="headerContent.btnNewFunc()">
+        <a ng-if="!headerContent.btnHomeIsLink && headerContent.btnHomeText !== undefined" data-id="header-btn-home" class="btn {{headerContent.btnHomeStyle}}" ng-click="headerContent.btnHomeFunc()">
+            <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;{{headerContent.btnHomeText}}
+        </a>
+        <!--new button-->
+        <a ng-if="headerContent.btnNewIsLink && headerContent.btnNewText !== undefined" class="btn {{headerContent.btnNewStyle}}" href="{{headerContent.btnNewTarget}}">
             <i class="glyphicon glyphicon-plus"></i>&nbsp;{{headerContent.btnNewText}}
         </a>
-        <a id="header-btn-other1" ng-show="{{headerContent.btnOther1Text !== undefined}}" class="btn {{headerContent.btnOther1Style}}" href="{{headerContent.btnOther1Target}}" ng-click="headerContent.btnOther1Func()">
+        <a ng-if="!headerContent.btnNewIsLink && headerContent.btnNewText !== undefined" data-id="header-btn-new" class="btn {{headerContent.btnNewStyle}}" ng-click="headerContent.btnNewFunc()">
+            <i class="glyphicon glyphicon-plus"></i>&nbsp;{{headerContent.btnNewText}}
+        </a>
+        <!--other1 button-->
+        <a ng-if="headerContent.btnOther1IsLink && headerContent.btnOther1Text !== undefined" class="btn {{headerContent.btnOther1Style}}" href="{{headerContent.btnOther1Target}}">
             <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;{{headerContent.btnOther1Text}}
         </a>
-        <a id="header-btn-other2" ng-show="{{headerContent.btnOther2Text !== undefined}}" class="btn {{headerContent.btnOther2Style}}" href="{{headerContent.btnOther2Target}}" ng-click="headerContent.btnOther2Func($event)">
+        <a ng-if="!headerContent.btnOther1IsLink && headerContent.btnOther1Text !== undefined" data-id="header-btn-other1" class="btn {{headerContent.btnOther1Style}}" ng-click="headerContent.btnOther1Func()">
+            <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;{{headerContent.btnOther1Text}}
+        </a>
+        <!--other2 button-->
+        <a ng-if="headerContent.btnOther2IsLink && headerContent.btnOther2Text !== undefined" class="btn {{headerContent.btnOther2Style}}" href="{{headerContent.btnOther2Target}}">
+            <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;{{headerContent.btnOther2Text}}
+        </a>
+        <a ng-if="!headerContent.btnOther2IsLink && headerContent.btnOther2Text !== undefined" data-id="header-btn-other2" class="btn {{headerContent.btnOther2Style}}" ng-click="headerContent.btnOther2Func($event)">
             <i class="glyphicon glyphicon-ok-circle"></i>&nbsp;{{headerContent.btnOther2Text}}
         </a>
     </div>
